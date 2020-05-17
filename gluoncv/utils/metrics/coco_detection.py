@@ -15,7 +15,7 @@ from ...data.mscoco.utils import try_import_pycocotools
 from ...data.transforms.bbox import affine_transform
 
 
-class COCODetectionMetric(mx.metric.EvalMetric):
+class COCODetectionMetric(mx.gluon.metric.EvalMetric):
     """Detection metric for COCO bbox task.
 
     Parameters

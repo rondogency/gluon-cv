@@ -203,7 +203,7 @@ finetune_net.hybridize()
 
 trainer = gluon.Trainer(finetune_net.collect_params(), 'sgd', {
                         'learning_rate': lr, 'momentum': momentum, 'wd': wd})
-metric = mx.metric.Accuracy()
+metric = mx.gluon.metric.Accuracy()
 L = gluon.loss.SoftmaxCrossEntropyLoss()
 
 ################################################################################
@@ -224,7 +224,7 @@ L = gluon.loss.SoftmaxCrossEntropyLoss()
 # We define a evaluation function for validation and testing.
 
 def test(net, val_data, ctx):
-    metric = mx.metric.Accuracy()
+    metric = mx.gluon.metric.Accuracy()
     for i, batch in enumerate(val_data):
         data = gluon.utils.split_and_load(batch[0], ctx_list=ctx, batch_axis=0, even_split=False)
         label = gluon.utils.split_and_load(batch[1], ctx_list=ctx, batch_axis=0, even_split=False)

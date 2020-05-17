@@ -83,8 +83,8 @@ def benchmark(network, ctx, batch_size=64, image_size=224, num_iter=100, datatyp
     return toc
 
 def test(network, ctx, val_data, mode='image'):
-    acc_top1 = mx.metric.Accuracy()
-    acc_top5 = mx.metric.TopKAccuracy(5)
+    acc_top1 = mx.gluon.metric.Accuracy()
+    acc_top5 = mx.gluon.metric.TopKAccuracy(5)
     acc_top1.reset()
     acc_top5.reset()
     if not opt.rec_dir:

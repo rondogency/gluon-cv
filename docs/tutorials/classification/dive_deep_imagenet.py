@@ -217,8 +217,8 @@ At the end of every epoch, we record and print the metric scores.
 
 .. code-block:: python
 
-    acc_top1 = mx.metric.Accuracy()
-    acc_top5 = mx.metric.TopKAccuracy(5)
+    acc_top1 = mx.gluon.metric.Accuracy()
+    acc_top5 = mx.gluon.metric.TopKAccuracy(5)
     train_history = TrainingHistory(['training-top1-err', 'training-top5-err',
                                      'validation-top1-err', 'validation-top5-err'])
 
@@ -231,8 +231,8 @@ and report the top-1 and top-5 error rate.
 .. code-block:: python
 
     def test(ctx, val_data):
-        acc_top1_val = mx.metric.Accuracy()
-        acc_top5_val = mx.metric.TopKAccuracy(5)
+        acc_top1_val = mx.gluon.metric.Accuracy()
+        acc_top5_val = mx.gluon.metric.TopKAccuracy(5)
         for i, batch in enumerate(val_data):
             data = gluon.utils.split_and_load(batch.data[0], ctx_list=ctx, batch_axis=0)
             label = gluon.utils.split_and_load(batch.label[0], ctx_list=ctx, batch_axis=0)

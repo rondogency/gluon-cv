@@ -512,11 +512,11 @@ def train(net, train_data, val_data, eval_metric, batch_size, ctx, logger, args)
     rcnn_cls_loss = mx.gluon.loss.SoftmaxCrossEntropyLoss()
     rcnn_box_loss = mx.gluon.loss.HuberLoss(rho=args.rcnn_smoothl1_rho)  # == smoothl1
     rcnn_mask_loss = mx.gluon.loss.SigmoidBinaryCrossEntropyLoss(from_sigmoid=False)
-    metrics = [mx.metric.Loss('RPN_Conf'),
-               mx.metric.Loss('RPN_SmoothL1'),
-               mx.metric.Loss('RCNN_CrossEntropy'),
-               mx.metric.Loss('RCNN_SmoothL1'),
-               mx.metric.Loss('RCNN_Mask')]
+    metrics = [mx.gluon.metric.Loss('RPN_Conf'),
+               mx.gluon.metric.Loss('RPN_SmoothL1'),
+               mx.gluon.metric.Loss('RCNN_CrossEntropy'),
+               mx.gluon.metric.Loss('RCNN_SmoothL1'),
+               mx.gluon.metric.Loss('RCNN_Mask')]
 
     rpn_acc_metric = RPNAccMetric()
     rpn_bbox_metric = RPNL1LossMetric()

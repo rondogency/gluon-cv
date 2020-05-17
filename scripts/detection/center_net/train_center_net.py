@@ -194,9 +194,9 @@ def train(net, train_data, val_data, eval_metric, ctx, args):
     heatmap_loss = gcv.loss.HeatmapFocalLoss(from_logits=True)
     wh_loss = gcv.loss.MaskedL1Loss(weight=args.wh_weight)
     center_reg_loss = gcv.loss.MaskedL1Loss(weight=args.center_reg_weight)
-    heatmap_loss_metric = mx.metric.Loss('HeatmapFocal')
-    wh_metric = mx.metric.Loss('WHL1')
-    center_reg_metric = mx.metric.Loss('CenterRegL1')
+    heatmap_loss_metric = mx.gluon.metric.Loss('HeatmapFocal')
+    wh_metric = mx.gluon.metric.Loss('WHL1')
+    center_reg_metric = mx.gluon.metric.Loss('CenterRegL1')
 
     # set up logger
     logging.basicConfig()

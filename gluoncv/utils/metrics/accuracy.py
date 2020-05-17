@@ -6,7 +6,7 @@ from mxnet import ndarray
 from mxnet.metric import check_label_shapes
 
 
-class Accuracy(mx.metric.EvalMetric):
+class Accuracy(mx.gluon.metric.EvalMetric):
     """Computes accuracy classification score with optional ignored labels.
     The accuracy score is defined as
     .. math::
@@ -30,7 +30,7 @@ class Accuracy(mx.metric.EvalMetric):
     --------
     >>> predicts = [mx.nd.array([[0.3, 0.7], [0, 1.], [0.4, 0.6]])]
     >>> labels   = [mx.nd.array([0, 1, 1])]
-    >>> acc = mx.metric.Accuracy()
+    >>> acc = mx.gluon.metric.Accuracy()
     >>> acc.update(preds = predicts, labels = labels)
     >>> print acc.get()
     ('accuracy', 0.6666666666666666)

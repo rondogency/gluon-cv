@@ -166,7 +166,7 @@ lr_sched = lr_scheduler.CosineScheduler(
 class SplitSampler(mx.gluon.data.sampler.Sampler):
     """ Split the dataset into `num_parts` parts and sample from the part with
     index `part_index`
- 
+
     Parameters
     ----------
     length: int
@@ -184,14 +184,14 @@ class SplitSampler(mx.gluon.data.sampler.Sampler):
         # Compute the end index for this partition
         self.end = self.start + self.part_len
         self.random = random
- 
+
     def __iter__(self):
         # Extract examples between `start` and `end`, shuffle and return them.
         indices = list(range(self.start, self.end))
         if self.random:
             random.shuffle(indices)
         return iter(indices)
- 
+
     def __len__(self):
         return self.part_len
 
@@ -234,7 +234,7 @@ def get_train_data(rec_train, batch_size, data_nthreads, input_size, crop_ratio,
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ])
-        
+
     transform_train = transforms.Compose(train_transforms)
 
     train_set = mx.gluon.data.vision.ImageRecordDataset(rec_train).transform_first(transform_train)
@@ -336,8 +336,8 @@ def train_gluon():
         save_frequency = 0
 
     def evaluate(epoch):
-        acc_top1 = mx.metric.Accuracy()
-        acc_top5 = mx.metric.TopKAccuracy(5)
+        acc_top1 = mx.gluon.metric.Accuracy()
+        acc_top5 = mx.gluon.metric.TopKAccuracy(5)
         for _, batch in enumerate(val_data):
             data, label = val_batch_fn(batch, context)
             output = net(data.astype(args.dtype, copy=False))
@@ -409,9 +409,9 @@ def train_gluon():
     else:
         loss_fn = gluon.loss.SoftmaxCrossEntropyLoss(sparse_label=sparse_label_loss)
     if args.mixup:
-        train_metric = mx.metric.RMSE()
+        train_metric = mx.gluon.metric.RMSE()
     else:
-        train_metric = mx.metric.Accuracy()
+        train_metric = mx.gluon.metric.Accuracy()
 
     def mixup_transform(label, classes, lam=1, eta=0.0):
         if isinstance(label, mx.nd.NDArray):

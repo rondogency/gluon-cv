@@ -38,7 +38,7 @@ def parse_args():
                     help='load static model as hybridblock.')
     parser.add_argument('--deploy', action='store_true',
                         help='whether load static model for deployment')
-    parser.add_argument('--quantized', action='store_true', 
+    parser.add_argument('--quantized', action='store_true',
                         help='whether to use int8 pretrained  model')
     parser.add_argument('--num-iterations', type=int, default=100,
                         help='number of benchmarking iterations.')
@@ -192,8 +192,8 @@ def batch_fn(batch, ctx):
 
 
 def test(ctx, val_data, opt, net):
-    acc_top1 = mx.metric.Accuracy()
-    acc_top5 = mx.metric.TopKAccuracy(5)
+    acc_top1 = mx.gluon.metric.Accuracy()
+    acc_top5 = mx.gluon.metric.TopKAccuracy(5)
 
     for i, batch in enumerate(val_data):
         data, label = batch_fn(batch, ctx)

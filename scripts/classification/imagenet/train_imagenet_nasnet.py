@@ -238,10 +238,10 @@ def main():
     else:
         train_data, val_data, batch_fn = get_data_loader(opt.data_dir, batch_size, num_workers)
 
-    acc_top1 = mx.metric.Accuracy()
-    acc_top5 = mx.metric.TopKAccuracy(5)
-    acc_top1_aux = mx.metric.Accuracy()
-    acc_top5_aux = mx.metric.TopKAccuracy(5)
+    acc_top1 = mx.gluon.metric.Accuracy()
+    acc_top5 = mx.gluon.metric.TopKAccuracy(5)
+    acc_top1_aux = mx.gluon.metric.Accuracy()
+    acc_top5_aux = mx.gluon.metric.TopKAccuracy(5)
 
     save_frequency = opt.save_frequency
     if opt.save_dir and save_frequency:

@@ -8,7 +8,7 @@ import warnings
 import mxnet as mx
 from ...data.mscoco.utils import try_import_pycocotools
 
-class COCOKeyPointsMetric(mx.metric.EvalMetric):
+class COCOKeyPointsMetric(mx.gluon.metric.EvalMetric):
     """Detection metric for COCO bbox task.
 
     Parameters

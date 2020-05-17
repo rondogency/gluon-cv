@@ -108,8 +108,8 @@ trainer = gluon.Trainer(
     {'learning_rate': 0.001, 'wd': 0.0005, 'momentum': 0.9})
 
 mbox_loss = gcv.loss.SSDMultiBoxLoss()
-ce_metric = mx.metric.Loss('CrossEntropy')
-smoothl1_metric = mx.metric.Loss('SmoothL1')
+ce_metric = mx.gluon.metric.Loss('CrossEntropy')
+smoothl1_metric = mx.gluon.metric.Loss('SmoothL1')
 
 for epoch in range(0, 2):
     ce_metric.reset()

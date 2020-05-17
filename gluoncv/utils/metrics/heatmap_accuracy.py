@@ -6,7 +6,7 @@ from mxnet.metric import check_label_shapes
 
 from ...data.transforms.pose import get_max_pred
 
-class HeatmapAccuracy(mx.metric.EvalMetric):
+class HeatmapAccuracy(mx.gluon.metric.EvalMetric):
     """Computes heatmap accuracy for keypoint
     Parameters
     ----------
@@ -26,7 +26,7 @@ class HeatmapAccuracy(mx.metric.EvalMetric):
     --------
     >>> predicts = [mx.nd.array([[0.3, 0.7], [0, 1.], [0.4, 0.6]])]
     >>> labels   = [mx.nd.array([0, 1, 1])]
-    >>> acc = mx.metric.Accuracy()
+    >>> acc = mx.gluon.metric.Accuracy()
     >>> acc.update(preds = predicts, labels = labels)
     >>> print acc.get()
     ('accuracy', 0.6666666666666666)

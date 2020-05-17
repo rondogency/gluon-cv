@@ -350,9 +350,9 @@ def main():
     ])
     optimizer_params['lr_scheduler'] = lr_scheduler
 
-    train_metric = mx.metric.Accuracy()
-    acc_top1 = mx.metric.Accuracy()
-    acc_top5 = mx.metric.TopKAccuracy(5)
+    train_metric = mx.gluon.metric.Accuracy()
+    acc_top1 = mx.gluon.metric.Accuracy()
+    acc_top5 = mx.gluon.metric.TopKAccuracy(5)
 
     def test(ctx, val_data, kvstore=None):
         acc_top1.reset()

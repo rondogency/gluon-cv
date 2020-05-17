@@ -289,11 +289,11 @@ def main():
         train_data, val_data, batch_fn = get_data_loader(opt.data_dir, batch_size, num_workers)
 
     if opt.mixup:
-        train_metric = mx.metric.RMSE()
+        train_metric = mx.gluon.metric.RMSE()
     else:
-        train_metric = mx.metric.Accuracy()
-    acc_top1 = mx.metric.Accuracy()
-    acc_top5 = mx.metric.TopKAccuracy(5)
+        train_metric = mx.gluon.metric.Accuracy()
+    acc_top1 = mx.gluon.metric.Accuracy()
+    acc_top5 = mx.gluon.metric.TopKAccuracy(5)
 
     save_frequency = opt.save_frequency
     if opt.save_dir and save_frequency:

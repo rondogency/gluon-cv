@@ -6,7 +6,7 @@ import numpy as np
 import mxnet as mx
 from ..bbox import bbox_iou
 
-class VOCMApMetric(mx.metric.EvalMetric):
+class VOCMApMetric(mx.gluon.metric.EvalMetric):
     """
     Calculate mean AP for object detection task
 

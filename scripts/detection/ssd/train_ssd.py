@@ -272,8 +272,8 @@ def train(net, train_data, val_data, eval_metric, ctx, args):
     lr_steps = sorted([float(ls) for ls in args.lr_decay_epoch.split(',') if ls.strip()])
 
     mbox_loss = gcv.loss.SSDMultiBoxLoss()
-    ce_metric = mx.metric.Loss('CrossEntropy')
-    smoothl1_metric = mx.metric.Loss('SmoothL1')
+    ce_metric = mx.gluon.metric.Loss('CrossEntropy')
+    smoothl1_metric = mx.gluon.metric.Loss('SmoothL1')
 
     # set up logger
     logging.basicConfig()

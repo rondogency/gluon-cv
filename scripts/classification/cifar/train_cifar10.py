@@ -109,7 +109,7 @@ def main():
     ])
 
     def test(ctx, val_data):
-        metric = mx.metric.Accuracy()
+        metric = mx.gluon.metric.Accuracy()
         for i, batch in enumerate(val_data):
             data = gluon.utils.split_and_load(batch[0], ctx_list=ctx, batch_axis=0)
             label = gluon.utils.split_and_load(batch[1], ctx_list=ctx, batch_axis=0)
@@ -132,8 +132,8 @@ def main():
 
         trainer = gluon.Trainer(net.collect_params(), optimizer,
                                 {'learning_rate': opt.lr, 'wd': opt.wd, 'momentum': opt.momentum})
-        metric = mx.metric.Accuracy()
-        train_metric = mx.metric.Accuracy()
+        metric = mx.gluon.metric.Accuracy()
+        train_metric = mx.gluon.metric.Accuracy()
         loss_fn = gluon.loss.SoftmaxCrossEntropyLoss()
         train_history = TrainingHistory(['training-error', 'validation-error'])
 

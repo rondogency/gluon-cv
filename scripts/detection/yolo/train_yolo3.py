@@ -232,10 +232,10 @@ def train(net, train_data, val_data, eval_metric, ctx, args):
     l1_loss = gluon.loss.L1Loss()
 
     # metrics
-    obj_metrics = mx.metric.Loss('ObjLoss')
-    center_metrics = mx.metric.Loss('BoxCenterLoss')
-    scale_metrics = mx.metric.Loss('BoxScaleLoss')
-    cls_metrics = mx.metric.Loss('ClassLoss')
+    obj_metrics = mx.gluon.metric.Loss('ObjLoss')
+    center_metrics = mx.gluon.metric.Loss('BoxCenterLoss')
+    scale_metrics = mx.gluon.metric.Loss('BoxScaleLoss')
+    cls_metrics = mx.gluon.metric.Loss('ClassLoss')
 
     # set up logger
     logging.basicConfig()

@@ -203,7 +203,7 @@ loss_fn = gluon.loss.SoftmaxCrossEntropyLoss()
 # process. Besides, we record metric values, and will print them at the
 # end of training.
 
-train_metric = mx.metric.Accuracy()
+train_metric = mx.gluon.metric.Accuracy()
 train_history = TrainingHistory(['training-error', 'validation-error'])
 
 ################################################################
@@ -216,7 +216,7 @@ train_history = TrainingHistory(['training-error', 'validation-error'])
 # and prevent overfitting.
 
 def test(ctx, val_data):
-    metric = mx.metric.Accuracy()
+    metric = mx.gluon.metric.Accuracy()
     for i, batch in enumerate(val_data):
         data = gluon.utils.split_and_load(batch[0], ctx_list=ctx, batch_axis=0)
         label = gluon.utils.split_and_load(batch[1], ctx_list=ctx, batch_axis=0)

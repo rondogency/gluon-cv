@@ -12,7 +12,7 @@ import numpy as np
 from ...data.mscoco.utils import try_import_pycocotools
 
 
-class COCOInstanceMetric(mx.metric.EvalMetric):
+class COCOInstanceMetric(mx.gluon.metric.EvalMetric):
     """Instance segmentation metric for COCO bbox and segm task.
     Will return box summary, box metric, seg summary and seg metric.
 

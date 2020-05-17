@@ -166,7 +166,7 @@ loss_fn = gluon.loss.SoftmaxCrossEntropyLoss()
 # process. Besides, we record metric values, and will print them at the
 # end of training.
 
-train_metric = mx.metric.Accuracy()
+train_metric = mx.gluon.metric.Accuracy()
 train_history = TrainingHistory(['training-acc'])
 
 ################################################################
