@@ -3,7 +3,7 @@
 import numpy as np
 import mxnet as mx
 from mxnet import ndarray
-from mxnet.metric import check_label_shapes
+from mxnet.gluon.metric import check_label_shapes
 
 
 class Accuracy(mx.gluon.metric.EvalMetric):

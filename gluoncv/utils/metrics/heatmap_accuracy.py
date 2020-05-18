@@ -2,7 +2,7 @@
 # pylint: disable=assignment-from-no-return
 import numpy as np
 import mxnet as mx
-from mxnet.metric import check_label_shapes
+from mxnet.gluon.metric import check_label_shapes
 
 from ...data.transforms.pose import get_max_pred
 
